@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 const Home_Page = () => {
   const [data, setdata] = useState([]);
   const [loading, setloading] = useState(true);
+  const [search, setsearch] = useState("");
 
   const getData = async () => {
     const response = await fetch("https://api.github.com/users");
@@ -18,7 +19,7 @@ const Home_Page = () => {
   useEffect(() => {
     setTimeout(() => {
       getData();
-    }, 1000);
+    }, 900);
   }, []);
   return (
     <>
@@ -28,11 +29,17 @@ const Home_Page = () => {
       <div className="flex mt-3 mb-3 justify-center">
         <Input
           className="w-[14rem] h-[2.5rem] text-base"
-          placeholder="Search Here"
+          placeholder="Search Name Here"
+          value={search}
+          onChange={(e) => setsearch(e.target.value)}
         ></Input>
       </div>
       <div className="max-w-[1300px] m-auto">
-        {loading ? <Skeleton_Card /> : <Card_Items datas={data} />}
+        {loading ? (
+          <Skeleton_Card />
+        ) : (
+          <Card_Items datas={data} search={search} />
+        )}
       </div>
     </>
   );

@@ -9,13 +9,15 @@ const Skeleton_Card = () => {
           .fill(null)
           .map((curElem, id) => {
             return (
-              <div className=" w-[300px] m-auto py-3 sm:py-0 lg:py-0" key={id}>
+              <div
+                className="animate-pulse w-[300px] m-auto py-3 sm:py-0 lg:py-0"
+                key={id}
+              >
                 <div className="w-full rounded-md border bg-white">
                   <Skeleton className="w-full h-[200px] rounded-md" />
 
                   <div className="p-4">
                     <Skeleton className="w-full h-[28px] rounded-md" />
-
                     <div className="mt-3">
                       <Skeleton className="w-full h-[60px] rounded-md" />
                     </div>
